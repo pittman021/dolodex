@@ -16,6 +16,16 @@
 
 @import 'bulma';
 
+/* global */
+
+html {
+    min-height: 100vh;
+}
+
+body {
+    min-height: 100vh;
+}
+
 .hero.is-success {
   background: #f2f6fa;
 }
@@ -28,4 +38,10 @@
 
 #contacts-table {
   margin: 0 auto;
+}
+
+/* form */
+
+.contact-from {
+  max-width: 400px;
 }

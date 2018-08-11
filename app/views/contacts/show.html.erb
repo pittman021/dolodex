@@ -1,4 +1,4 @@
-<div class="section">
+<section class="section">
 
 <div class="container">
 	<div class="columns">
@@ -10,9 +10,10 @@
 		<p>Address: <%= @contact.address %></p>
 		<p>Wedding Anniversary: <%= @contact.wedding_anniversary %>
 
+			<h2>Gifts</h2>
 		<ul>
 		<% @contact.gifts.each do |gift| %>
-			<li><%= gift.title %>: <%= gift.url %></li>
+			<li><%= gift.title %>: <a href=" <%=gift.url %>"><%= gift.url %></a></li>
 
 		<% end %>
 	</ul>

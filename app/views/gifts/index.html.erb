@@ -1,0 +1,4 @@
+<ul>
+<% @gifts.each do |f| %>
+<li><%= f.title %> ==>  <a href="<%= f.url %>"><%= f.url %></a>
+<% end %>

@@ -6,5 +6,7 @@ Rails.application.routes.draw do
 		resources :gifts
 	end
 
-	root to: 'pages#home'
+	get '/gifts', to: 'gifts#index', as: 'gifts'
+
+	root to: 'contacts#index'
 end
