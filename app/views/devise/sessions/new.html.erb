@@ -1,0 +1,47 @@
+<div class="hero is-success is-fullheight">
+
+  <div class="hero-body">
+
+  <div class="container has-text-centered">
+
+    <div class="column is-4 is-offset-4">
+
+      <h3 class="title has-text-grey">Login</h3>
+        <div class="box">
+
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+              <%= f.label :email %><br />
+              <div class="control">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input' %>
+            </div>
+            </div>
+
+            <div class="field">
+              <%= f.label :password %><br />
+              <div class="control">
+              <%= f.password_field :password, autocomplete: "off", class: 'input' %>
+            </div>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end -%>
+
+            <div class="actions">
+              <%= f.submit "Log in", class: 'button is-medium is-fullwidth' %>
+            </div>
+          <% end %>
+        </div>
+          <p class="has-text-grey">
+            <%= render "devise/shared/links" %>
+          </p>
+    </div>
+  </div>
+
+  </div>
+
+</div>

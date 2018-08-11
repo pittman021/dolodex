@@ -1,0 +1,24 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/contacts">
+    <p>MyCRM</p>
+    </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-end">
+        <% if current_user %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item' %>
+        <% else %>
+        <%= link_to "Login", new_user_session_path, method: :GET, class: 'navbar-item' %>
+        <%= link_to "Sign Up", new_user_registration_path, method: :GET, class: 'navbar-item' %>
+        <% end %>
+      </div>
+  </div>
+  </div>
+</nav>

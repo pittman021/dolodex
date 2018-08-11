@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 		resources :gifts
 	end
 
-	root to: 'contacts#index'
+	root to: 'pages#home'
 end

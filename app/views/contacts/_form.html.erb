@@ -1,0 +1,53 @@
+<div class="container">
+
+<%= content_tag :div,
+id: "contact-form",
+data: {
+  contact: @contact.to_json(except: [:created_at, :updated_at, :image]),
+  gifts_attributes: @contact.gifts.to_json(except: [:user_id, :created_at, :updated_at, :image]),
+} do %>
+
+<div class="field control">
+  <label>First Name</label>
+  <input type="text" class="input" v-model="contact.first_name" />
+</div>
+
+<div class="field control">
+<label>Last Name</label>
+<input type="text" class="input" v-model="contact.last_name" />
+</div>
+
+
+<div class="field control">
+<label>DOB</label>
+<input type="text" class="input" v-model="contact.date_of_birth" />
+</div>
+
+<div class="field control">
+<label>Address</label>
+<input type="text" class="input" v-model="contact.address" />
+</div>
+
+<h2>Gifts</h2>
+
+<div v-for="(gift, index) in contact.gifts_attributes">
+
+  <div v-if="gift._destroy != '1'" class="field has-addons">
+    <label>Gift Name</label>
+    <div class="control">
+    <input type="text" class="input" v-model="gift.title" />
+  </div>
+  <div class="control">
+    <button class="button" v-on:click="removeGift(index)">Delete Gift</button>
+  </div>
+  </div>
+</div>
+
+<button class="button" v-on:click="addGift">Add Gift</button>
+
+<br>
+<button class="button" v-on:click="saveContact">Save Team</button>
+
+<% end %>
+
+</div>

@@ -11,6 +11,8 @@
 #   policy.object_src  :none
 #   policy.script_src  :https,
 #   policy.style_src   :self, :https
+#   policy.script_src  :self, :https
+#   policy.style_src   :self, :https
 
 
 #   # Specify URI for violation reports

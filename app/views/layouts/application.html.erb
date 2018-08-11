@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyCRM</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'hello_vue' %>
+  </head>
+
+  <body>
+
+    <%= render 'navbar' %>
+
+    <p class="notice is-primary"><%= notice %></p>
+    <p class="alert is-danger"><%= alert %></p>
+
+    <%= yield %>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>MyCRM</strong> by Tim Pittman.
+      </p>
+    </div>
+</footer>
+
+  </body>
+</html>
