@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 		resources :gifts
 	end
 
+	resources :lists
+
 	get '/gifts', to: 'gifts#index', as: 'gifts'
 
 	root to: 'contacts#index'

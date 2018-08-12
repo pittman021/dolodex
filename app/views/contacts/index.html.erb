@@ -12,71 +12,60 @@
 </section>
 
 <section class="section contacts-events">
-  <div class="container event-box">
-    <div class="columns">
-      <div class="column">
-				<div class="box">
+
+  <div class="columns">
+    <div class="column is-narrow">
+
+      <div class="event box">
         <strong><%= Time.now.strftime("%B") %> Birthdays</strong>
-        <% @birthdays_this_month.each do |d| %>
+          <% @birthdays_this_month.each do |d| %>
+            <p><%= d.first_name %> <%= d.last_name %>: <%= d.date_of_birth %></p>
+            <% end %>
+        <br>
+        <strong><%= (Time.now + 1.month).strftime("%B") %> Birthdays</strong>
+        <% @birthdays_next_month.each do |d| %>
         <p><%= d.first_name %> <%= d.last_name %>: <%= d.date_of_birth %></p>
         <% end %>
-				<br>
-
-				<strong><%= (Time.now + 1.month).strftime("%B") %> Birthdays</strong>
-				<% @birthdays_next_month.each do |d| %>
-				<p><%= d.first_name %> <%= d.last_name %>: <%= d.date_of_birth %></p>
-				<% end %>
-      </div>
-		</div>
-      <div class="column">
-				<div class="box">
-					<strong>Upcoming Events</strong>
-				</div>
       </div>
     </div>
-  </div>
+    <div class="column">
 
-</section>
+      <section class="contacts-table">
+      	<div class="container">
+          <div class="columns">
+            <div class="column is-4 is-offset-8">
+              <%= link_to "Add New Contact", new_contact_path, method: :get, class: 'button' %>
+          </div>
+        </div>
+      		<table class="table" id="contacts-table">
+        		<thead>
+        			<tr>
+        				<th>First Name</th>
+        				<th>Last Name</th>
+        				<th>Address</th>
+        				<th>Birthday</th>
+        				<th>Wedding Ann.</th>
 
-<hr>
+        				<th>View</ht>
+        			</tr>
+        		</thead>
+        		<tbody>
+        		<% @contacts.each do |contact| %>
+        			<tr>
+        				<td><%= contact.first_name %></td>
+        				<td><%= contact.last_name %></td>
+        				<td><%= contact.address %></td>
+        				<td><%= contact.date_of_birth %></td>
+        				<td><%= contact.wedding_anniversary %> </td>
 
-<section class="contacts-table">
-
-	<div class="container">
-
-    <div class="columns">
-      <div class="column is-4 is-offset-8">
-        <%= link_to "Add New Contact", new_contact_path, method: :get, class: 'button' %>
+        				<td><%= link_to "View", contact_path(contact) %>
+        			</tr>
+        		<% end %>
+        		</tbody>
+    		  </table>
+        </div>
+      </section>
+  
     </div>
   </div>
-
-		<table class="table" id="contacts-table">
-		<thead>
-			<tr>
-				<th>First Name</th>
-				<th>Last Name</th>
-				<th>Address</th>
-				<th>Birthday</th>
-				<th>Wedding Ann.</th>
-
-				<th>View</ht>
-			</tr>
-		</thead>
-		<tbody>
-		<% @contacts.each do |contact| %>
-			<tr>
-				<td><%= contact.first_name %></td>
-				<td><%= contact.last_name %></td>
-				<td><%= contact.address %></td>
-				<td><%= contact.date_of_birth %></td>
-				<td><%= contact.wedding_anniversary %> </td>
-
-				<td><%= link_to "View", contact_path(contact) %>
-			</tr>
-		<% end %>
-		</tbody>
-
-		</table>
-
-</div>
 </section>

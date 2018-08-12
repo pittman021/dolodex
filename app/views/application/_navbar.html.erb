@@ -3,9 +3,11 @@
     <a class="navbar-item" href="/contacts">
     <strong>MyCRM</strong>
     </a>
-    <a class="navbar-item" href="/gifts">
-      <p>All Gifts</p>
-    </a>
+    <% if current_user %>
+    <a class="navbar-item" href="/gifts"><p>View Gifts</p></a>
+    <a class="navbar-item" href="/lists"><p>View Lists</p></a>
+
+    <% end %>
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>

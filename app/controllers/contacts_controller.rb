@@ -5,6 +5,7 @@ class ContactsController < ApplicationController
   def index
     @user = current_user
     @contacts = current_user.contacts.all
+    @lists = current_user.lists.all
 
     @birthdays_this_month = Contact.where("EXTRACT(MONTH FROM date_of_birth) = ?", (Date.today.month))
     @birthdays_next_month = Contact.where("EXTRACT(MONTH FROM date_of_birth) = ?", (Date.today + 1.month).month)

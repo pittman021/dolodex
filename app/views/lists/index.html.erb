@@ -1,0 +1,11 @@
+<h2> Add List </h2>
+
+
+<%= form_for @list do |f| %>
+	<%= f.text_field :name %>
+	<%= f.submit %>
+<% end %>
+
+<% @lists.each do |l| %>
+<p> <%= l.name %> <p>
+	<% end %>
