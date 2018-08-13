@@ -11,45 +11,41 @@
   </div>
 </section>
 
-<section class="section contacts-events">
+<section class="container contacts-events">
 
   <div class="columns">
-    <div class="column is-narrow">
-      <div class="content box">
+    <div class="column is-3 content">
         <h4>Upcoming Birthdays</h4>
         <% @birthdays.each do |b| %>
           <div><%= b.first_name %> <%= b.last_name %>: <%= Date::MONTHNAMES[b.birthday_month] %> <%= b.birthday_day %></div>
         <% end %>
     </div>
+    <div class="column is-9">
+      <div class="box content">
+        <%= link_to "Add New Contact", new_contact_path, method: :get, class: 'button' %>
+      	<table class="table" id="contacts-table">
+      		<thead>
+      			<tr>
+      				<th>First Name</th>
+      				<th>Last Name</th>
+      				<th>Address</th>
+      				<th>Birthday</th>
+      				<th>View</ht>
+      			</tr>
+      		</thead>
+      		<tbody>
+      		<% @contacts.each do |contact| %>
+      			<tr>
+      				<td><%= contact.first_name %></td>
+      				<td><%= contact.last_name %></td>
+      				<td><%= contact.address %></td>
+      				<td> <%= Date::MONTHNAMES[contact.birthday_month] %> <%= contact.birthday_day %></td>
+      				<td><%= link_to "View", contact_path(contact) %>
+      			</tr>
+      		<% end %>
+      		</tbody>
+        </table>
+     </div>
+</div>
   </div>
-    <div class="column">
-      <section class="contacts-table">
-        	<div class="container">
-            <%= link_to "Add New Contact", new_contact_path, method: :get, class: 'button' %>
-        		<table class="table" id="contacts-table">
-          		<thead>
-          			<tr>
-          				<th>First Name</th>
-          				<th>Last Name</th>
-          				<th>Address</th>
-          				<th>Birthday</th>
-          				<th>View</ht>
-          			</tr>
-          		</thead>
-          		<tbody>
-          		<% @contacts.each do |contact| %>
-          			<tr>
-          				<td><%= contact.first_name %></td>
-          				<td><%= contact.last_name %></td>
-          				<td><%= contact.address %></td>
-          				<td> <%= Date::MONTHNAMES[contact.birthday_month] %> <%= contact.birthday_day %></td>
-          				<td><%= link_to "View", contact_path(contact) %>
-          			</tr>
-          		<% end %>
-          		</tbody>
-      		  </table>
-          </div>
-      </div>
-    </div>
-
 </section>
