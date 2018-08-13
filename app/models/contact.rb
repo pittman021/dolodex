@@ -12,10 +12,8 @@ class Contact < ApplicationRecord
 	def self.import(file)
 		# a block the runs through a loop in our CSV data
 
-		CSV.foreach(file.path, headers:true) do |row|
+		CSV.foreach(file.path, headers: true, :header_converters => :symbol ) do |row|
 		# creates a user for each row in the CSV file
-
-		puts row.to_hash
 		Contact.create! row.to_hash
 end
 end
