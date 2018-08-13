@@ -53,6 +53,8 @@ document.addEventListener('turbolinks:load', () => {
       },
       saveContact: function() {
 
+        console.log(this.contact)
+
         if(this.contact.id == null) {
                   // gives us vue resource
           this.$http.post('/contacts', { contact: this.contact }).then(response => {

@@ -7,8 +7,7 @@ class ContactsController < ApplicationController
     @contacts = current_user.contacts.all
     @lists = current_user.lists.all
 
-    @birthdays_this_month = Contact.where("EXTRACT(MONTH FROM date_of_birth) = ?", (Date.today.month))
-    @birthdays_next_month = Contact.where("EXTRACT(MONTH FROM date_of_birth) = ?", (Date.today + 1.month).month)
+    @birthdays = Contact.where('birthday_month': Date.today.month .. Date.today.month + 1.month)
   end
 
   def create
@@ -58,7 +57,7 @@ class ContactsController < ApplicationController
   end
 
   def contact_params
-    params.require(:contact).permit(:id, :user_id, :first_name, :last_name, :date_of_birth, :wedding_anniversary, :address, gifts_attributes: [:id, :title, :image, :contact_id, :url, :_destroy])
+    params.require(:contact).permit(:id, :user_id, :first_name, :last_name, :birthday_day, :birthday_month, :wedding_anniversary, :address, gifts_attributes: [:id, :title, :image, :contact_id, :url, :_destroy])
   end
 
 end

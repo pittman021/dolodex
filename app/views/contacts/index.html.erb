@@ -15,21 +15,16 @@
 
   <div class="columns">
     <div class="column is-narrow">
-
-      <div class="event box">
-        <strong><%= Time.now.strftime("%B") %> Birthdays</strong>
-          <% @birthdays_this_month.each do |d| %>
-            <p><%= d.first_name %> <%= d.last_name %>: <%= d.date_of_birth %></p>
-            <% end %>
-        <br>
-        <strong><%= (Time.now + 1.month).strftime("%B") %> Birthdays</strong>
-        <% @birthdays_next_month.each do |d| %>
-        <p><%= d.first_name %> <%= d.last_name %>: <%= d.date_of_birth %></p>
+      <div class="content box">
+        <h4>Upcoming Birthdays</h4>
+        <% @birthdays.each do |b| %>
+      <p><%= b.first_name %> <%= b.last_name %>: <%= Date::MONTHNAMES[b.birthday_month] %> <%= b.birthday_day %></p>
         <% end %>
-      </div>
-    </div>
-    <div class="column">
+        <h2>Upcoming Events</h2>
 
+    </div>
+  </div>
+    <div class="column">
       <section class="contacts-table">
       	<div class="container">
           <div class="columns">
@@ -55,7 +50,7 @@
         				<td><%= contact.first_name %></td>
         				<td><%= contact.last_name %></td>
         				<td><%= contact.address %></td>
-        				<td><%= contact.date_of_birth %></td>
+        				<td> <%= Date::MONTHNAMES[contact.birthday_month] %> <%= contact.birthday_day %></td>
         				<td><%= contact.wedding_anniversary %> </td>
 
         				<td><%= link_to "View", contact_path(contact) %>
@@ -65,7 +60,7 @@
     		  </table>
         </div>
       </section>
-  
+
     </div>
   </div>
 </section>
