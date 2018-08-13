@@ -10,6 +10,15 @@ class ContactsController < ApplicationController
     @birthdays = Contact.where('birthday_month': Date.today.month .. Date.today.month + 1.month)
   end
 
+  def upload
+    @contacts = current_user.contacts.all
+  end
+
+  def import
+    current_user.contacts.import(params[:file])
+    redirect_to contacts_path, notice: 'Data Imported!'
+  end
+
   def create
     @contact = current_user.contacts.new(contact_params)
 

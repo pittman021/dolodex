@@ -1,4 +1,4 @@
-<% unless controller_name == "pages" %>
+<% unless controller_name == "pages" && "users" %>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
@@ -8,6 +8,7 @@
     <% if current_user %>
     <a class="navbar-item" href="/gifts"><p>View Gifts</p></a>
     <a class="navbar-item" href="/lists"><p>View Lists</p></a>
+    <%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %>
 
     <% end %>
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
