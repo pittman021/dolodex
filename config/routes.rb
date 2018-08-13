@@ -10,5 +10,5 @@ Rails.application.routes.draw do
 
 	get '/gifts', to: 'gifts#index', as: 'gifts'
 
-	root to: 'contacts#index'
+	root to: 'pages#home'
 end
