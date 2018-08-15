@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
     @contacts = current_user.contacts.all
     @lists = current_user.lists.all
 
-    @birthdays = Contact.where("birthday_month <= ? AND birthday_month >= ?", Date.today.month, Date.today.next.month).order(:birthday_day)
+    @birthdays = current_user.contacts.where("birthday_month <= ? AND birthday_month >= ?", Date.today.month, Date.today.next.month).order(:birthday_day)
   end
 
   def upload

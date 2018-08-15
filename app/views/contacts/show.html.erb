@@ -6,7 +6,7 @@
 	<div class="content">
 
 	<h1><%=  @contact.first_name %> <%= @contact.last_name %></h1>
-		<p>Date of Birth: <%= Date.new(@contact.birthday_month).strftime("%B") %> <%= @contact.birthday_day %>
+		<p>Birthday: <%= Date.new(@contact.birthday_month).strftime("%B") %> <%= @contact.birthday_day %>
 		<p>Address: <%= @contact.address %></p>
 		<p>Wedding Anniversary: <%= @contact.wedding_anniversary %>
 

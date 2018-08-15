@@ -7,18 +7,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'hello_vue' %>
+    <%= javascript_pack_tag    'hello_vue' %>
   </head>
 
   <body>
 
     <%= render 'navbar' %>
-
-    <p class="notice is-primary"><%= notice %></p>
-    <p class="alert is-danger"><%= alert %></p>
+      <!-- <p class="notice is-primary box cta"><%= notice %></div>
+      <p class="alert is-danger box cta"><%= alert %></div> -->
 
     <%= yield %>
-
 
   <!-- <footer class="footer">
     <div class="content has-text-centered">

@@ -1,34 +1,92 @@
-<% unless controller_name == "pages" && "users" %>
+<% if controller_name == "sessions" || controller_name == 'registrations' || controller_name == 'pages' %>
 
 <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/contacts">
-    <strong>MyCRM</strong>
-    </a>
-    <% if current_user %>
-    <a class="navbar-item" href="/gifts"><p>View Gifts</p></a>
-    <a class="navbar-item" href="/lists"><p>View Lists</p></a>
-    <%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %>
+  <div class="container">
+    <div class="navbar-brand">
 
-    <% end %>
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
 
-  <div class="navbar-menu">
-    <div class="navbar-end">
-        <% if current_user %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item' %>
-        <% else %>
-        <%= link_to "Login", new_user_session_path, method: :GET, class: 'navbar-item' %>
-        <%= link_to "Sign Up", new_user_registration_path, method: :GET, class: 'navbar-item' %>
-        <% end %>
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        <div class="tabs is-right">
+          <ul>
+          <% if current_user %>
+            <li><a class="navbar-item" href="/gifts"><p>View Gifts</p></a></li>
+            <li><a class="navbar-item" href="/lists"><p>View Lists</p></a></li>
+            <li><%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %></li>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item is-active' %></li>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, method: :GET, class: 'navbar-item' %>
+            <%= link_to "Sign Up", new_user_registration_path, method: :GET, class: 'navbar-item' %>
+          <% end %>
+        </div>
       </div>
+      </div>
+    </div>
   </div>
-  </div>
+
 </nav>
+
+<% else %>
+
+<section class="hero is-primary is-medium is-bold">
+  <div class="hero-head">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/contacts">
+          <strong>MyCRM</strong>
+          </a>
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <div class="tabs is-right">
+              <ul>
+              <% if current_user %>
+                <li><a class="navbar-item" href="/gifts"><p>View Gifts</p></a></li>
+                <li><a class="navbar-item" href="/lists"><p>View Lists</p></a></li>
+                <li><%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %></li>
+                <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item is-active' %></li>
+              <% else %>
+                <%= link_to "Login", new_user_session_path, method: :GET, class: 'navbar-item' %>
+                <%= link_to "Sign Up", new_user_registration_path, method: :GET, class: 'navbar-item' %>
+              <% end %>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              MyCRM
+            </h1>
+            <h2 class="subtitle">
+              Welcome back, <%= @user.name %>
+            </h2>
+          </div>
+        </div>
+    </nav>
+  </div>
+</section>
+
+
+
+
+
+
+
+
 
 <% end %>

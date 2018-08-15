@@ -1,5 +1,7 @@
-<h2> Add List </h2>
+<section class="container contacts-events">
 
+
+<h2> Add List </h2>
 
 <%= form_for @list do |f| %>
 	<%= f.text_field :name %>
@@ -9,3 +11,5 @@
 <% @lists.each do |l| %>
 <p> <%= l.name %> <p>
 	<% end %>
+
+</section>

@@ -1,16 +1,3 @@
-<section class="hero is-small is-primary is-bold">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        MyCRM
-      </h1>
-      <h2 class="subtitle">
-        Welcome back, <%= @user.name %>
-      </h2>
-    </div>
-  </div>
-</section>
-
 <section class="container contacts-events">
 
   <div class="columns">
@@ -23,7 +10,7 @@
     <div class="column is-9">
       <div class="box content">
         <%= link_to "Add New Contact", new_contact_path, method: :get, class: 'button' %>
-      	<table class="table" id="contacts-table">
+      	<table class="table is-fullwidth" id="contacts-table">
       		<thead>
       			<tr>
       				<th>First Name</th>
