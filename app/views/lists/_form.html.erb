@@ -1,106 +1,62 @@
 <div class="container is-fluid">
 
-  <%= content_tag :div,
-  id: "list-contact-form",
-  data: {
-    contact: @contact.to_json(except: [:created_at, :updated_at, :image]),
-    gifts_attributes: @contact.gifts.to_json(except: [:user_id, :created_at, :updated_at, :image]),
-  } do %>
-
-  <div class="field control">
-    <label>First </label>
-    <input type="text" class="input" v-model="contact.first_name" />
-  </div>
-
-  <div class="field control">
-  <label>Last Name</label>
-  <input type="text" class="input" v-model="contact.last_name" />
-  </div>
+    <%= content_tag :div,
+    id: "list-form",
+    data: {
+      list: @list.to_json(except: [:created_at, :updated_at, :image]),
+      contact_ids: @contact_ids,
+      contacts_attributes: @contacts.to_json(except: [:user_id, :created_at, :updated_at, :image, :last_name, :wedding_anniversary, :address, :birthday_month, :birthday_day]),
+      contacts_available: @contacts_available.to_json(except: [:user_id, :created_at, :updated_at, :image, :last_name, :wedding_anniversary, :address, :birthday_month, :birthday_day])
+    } do %>
 
     <div class="field control">
-    <label>Birthday</label>
-    <select v-model="contact.birthday_month" >
-      <option value="1" selected>January</option>
-      <option value="2">February</option>
-      <option value="3">March</option>
-      <option value="4">April</option>
-      <option value="5">May</option>
-      <option value="6">June</option>
-      <option value="7">July</option>
-      <option value="8">August</option>
-      <option value="9">September</option>
-      <option value="10">October</option>
-      <option value="11">November</option>
-      <option value="12">December</option>
+      <label>Name</label>
+      <input type="text" class="input" v-model="list.name" />
+    </div>
+
+    <h2>Contacts in List</h2>
+
+    <div v-for="(contact, index) in contacts_attributes">
+
+      <div v-if="contact._destroy != '1'" class="field has-addons">
+        <p>{{contact.first_name}}: <a v-on:click="removeContact(index)">Delete</a>
+      </div>
+    </div>
+
+    <br>
+
+    <div>
+    <select v-model="selected">
+      <option v-for="contact in contacts_available" v-bind:value="contact.id">
+        {{ contact.first_name }}
+      </option>
     </select>
-
-    <select v-model="contact.birthday_day" >
-      <option value="1" selected>1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-      <option value="11">11</option>
-      <option value="12">12</option>
-      <option value="13">13</option>
-      <option value="14">14</option>
-      <option value="15">15</option>
-      <option value="16">16</option>
-      <option value="17">17</option>
-      <option value="18">18</option>
-      <option value="19">19</option>
-      <option value="20">20</option>
-      <option value="21">21</option>
-      <option value="22">22</option>
-      <option value="23">23</option>
-      <option value="24">24</option>
-      <option value="25">25</option>
-      <option value="26">26</option>
-      <option value="27">27</option>
-      <option value="28">28</option>
-      <option value="29">29</option>
-      <option value="30">30</option>
-      <option value="31">31</option>
-    </select>
-
+    <button class="button" v-on:click="addContact(index)">Add Contact</button>
   </div>
 
-  <div class="field control">
-  <label>Address</label>
-  <input type="text" class="input" v-model="contact.address" />
-  </div>
+    <br>
+    <button class="button" v-on:click="saveList">Save List</button>
 
-  <h2>Gifts</h2>
+    <% end %>
 
-  <div v-for="(gift, index) in contact.gifts_attributes">
-
-    <div v-if="gift._destroy != '1'" class="field has-addons">
-
-
-      <div class="field is-horizontal">
-
-      <input type="text" placeholder="gift title" class="input" v-model="gift.title" />
-      <input type="text" id="gift-url" placeholder="url" class="input" v-model="gift.url" />
     </div>
-    <div class="control">
-      <button class="button" v-on:click="removeGift(index)">Delete Gift</button>
-    </div>
-    </div>
-  </div>
-  <br>
-  <button class="button" v-on:click="addGift">Add Gift</button>
 
-  <br>
-  <br>
-  <button class="button" v-on:click="saveContact">Save Team</button>
-
-  <% end %>
-
-  </div>
+  </section>
 
 </section>
+
+<!-- <select name="contact[contact_id]" >
+  <% Contact.all.each do |contact| %>
+    <option value="<%= contact.id %>"><%= contact.first_name %></option>
+<% end %>
+
+
+
+  <%= form_for @list do |f| %>
+    <%= f.text_field :name %>
+    <%= fields_for :contact do |c| %>
+    <%= c.collection_select(:id, Contact.all, :id, :first_name) %>
+    <% end %>
+  <%= f.submit("Add Contact") %>
+ <% end %>
+</div> -->

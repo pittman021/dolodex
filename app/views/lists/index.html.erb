@@ -1,15 +1,20 @@
-<section class="container contacts-events">
 
+<section class="container">
 
-<h2> Add List </h2>
+<div class="content">
+	<h2> Add List </h2>
+</div>
 
 <%= form_for @list do |f| %>
-	<%= f.text_field :name %>
-	<%= f.submit %>
+	<div class="field control">
+		<%= f.text_field :name, class: 'input' %><br>
+		<%= f.submit class: 'button' %>
+	</div>
 <% end %>
 
 <% @lists.each do |l| %>
-<p> <%= l.name %> <p>
+		<p> <%= link_to "#{l.name}", list_path(l.id) %> <p>
 	<% end %>
+
 
 </section>

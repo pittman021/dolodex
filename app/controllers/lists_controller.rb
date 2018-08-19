@@ -17,13 +17,29 @@ class ListsController < ApplicationController
 		end
 	end
 
+	def update
+		@list = List.find(params[:id])
+
+		respond_to do |format|
+		if @list.update(list_params)
+			format.html { redirect_to lists_path, notice: 'Contact was successfully updated.' }
+			  format.json { render :json => @list.to_json, status: :ok, location: @list }
+		else
+			format.html { render root_path, notice: "Uh oh, something went wrong" }
+			format.json { render json: @list.errors, status: :unprocessable_entity }
+	end
+end
+end
+
 	def show
-		@list = List.includes(:contacts).find(params[:id])
+		@list = List.find(params[:id])
+		@contacts = @list.contacts
+		@contact_ids = @list.contacts.pluck(:id)
+		@contacts_available = Contact.all
+
 	end
 
 	def list_params
-		 params.require(:list).permit(:name)
+		 params.require(:list).permit(:id, :user_id, :name, contact_ids: [], contacts_attributes: [])
 	end
-
-
 end

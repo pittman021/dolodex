@@ -16,6 +16,7 @@ document.addEventListener('turbolinks:load', () => {
   Vue.http.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
 
   var element = document.getElementById("contact-form")
+  var list_form = document.getElementById("list-form")
 
   if (element != null) {
 
@@ -40,9 +41,7 @@ document.addEventListener('turbolinks:load', () => {
         })
       },
       removeGift: function(index) {
-
         var gift = this.contact.gifts_attributes[index]
-
 
         if ( gift.id == null ) {
           this.contact.gifts_attributes.splice(index, 1)
@@ -52,11 +51,9 @@ document.addEventListener('turbolinks:load', () => {
       }
       },
       saveContact: function() {
-
         if(this.contact.id == null) {
                   // gives us vue resource
           this.$http.post('/contacts', { contact: this.contact }).then(response => {
-            console.log(response)
             Turbolinks.visit(`/contacts/${response.body.id}`)
           }, response => {
 
@@ -64,7 +61,6 @@ document.addEventListener('turbolinks:load', () => {
 
         } else {
           this.$http.put(`/contacts/${this.contact.id}`, { contact: this.contact }).then(response => {
-
             Turbolinks.visit(`/contacts/${response.body.id}`)
           }, response => {
 
@@ -73,5 +69,60 @@ document.addEventListener('turbolinks:load', () => {
       }
     }
   })
+  }
+
+  if (list_form != null) {
+
+    var list = JSON.parse(list_form.dataset.list)
+    var contacts_attributes = JSON.parse(list_form.dataset.contactsAttributes)
+    var contacts_available = JSON.parse(list_form.dataset.contactsAvailable)
+    var contact_ids = JSON.parse(list_form.dataset.contactIds)
+    var selected = contacts_available[0]
+    list.contact_ids = contact_ids
+
+    const app = new Vue({
+      el: list_form,
+      data: function () {
+        return {
+          list: list,
+          selected: selected,
+          contacts_available: contacts_available,
+          contacts_attributes: contacts_attributes
+         }
+      },
+      methods: {
+        addContact: function() {
+          var contact = this.contacts_available[this.selected - 1]
+          this.contacts_attributes.push({
+            id: contact.id,
+            first_name: contact.first_name
+          });
+          this.list.contact_ids.push(contact.id);
+        },
+        removeContact: function(index) {
+
+            this.list.contact_ids.splice(index,1)
+            this.contacts_attributes.splice(index,1)
+        },
+        saveList: function() {
+          if(this.list == null) {
+                    // gives us vue resource
+            this.$http.post('/contacts', { contact: this.contact }).then(response => {
+              Turbolinks.visit(`/contacts/${response.body.id}`)
+            }, response => {
+
+            })
+
+          } else {
+            this.$http.put(`/lists/${this.list.id}`, {list: this.list }).then(response => {
+              Turbolinks.visit(`/lists/${response.body.id}`)
+            }, response => {
+
+            })
+          }
+        }
+      }
+    });
+
   }
 })

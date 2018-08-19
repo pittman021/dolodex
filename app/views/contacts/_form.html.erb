@@ -75,6 +75,11 @@
   <input type="text" class="input" v-model="contact.address" />
   </div>
 
+  <div class="field control">
+  <label>Wedding Anniversary</label>
+  <input type="text" class="input" v-model="contact.wedding_anniversary" />
+  </div>
+
   <h2>Gifts</h2>
 
   <div v-for="(gift, index) in contact.gifts_attributes">
@@ -97,7 +102,7 @@
 
   <br>
   <br>
-  <button class="button" v-on:click="saveContact">Save Team</button>
+  <button class="button" v-on:click="saveContact">Save Contact</button>
 
   <% end %>
 
