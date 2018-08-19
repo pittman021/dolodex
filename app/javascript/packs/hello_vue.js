@@ -91,17 +91,21 @@ document.addEventListener('turbolinks:load', () => {
       },
       methods: {
         addContact: function() {
-          // get the id & person selected & add to attributes
-          var contact = this.contacts_available[this.selected - 1]
-          console.log(contact)
+          const id = this.selected
 
+          // get the id & person selected & add to attributes
+          var contact = this.contacts_available.filter(function(contact) {
+            return id === contact.id
+          });
+
+          console.log(contact[0].first_name)
           // push item into attributes list to show on page
           this.contacts_attributes.push({
-            id: contact.id,
-            first_name: contact.first_name
+            id: contact[0].id,
+            first_name: contact[0].first_name
           });
           // push the item into the id list for post request
-          this.list.contact_ids.push(contact.id);
+          this.list.contact_ids.push(contact[0].id);
         },
         removeContact: function(index) {
             this.list.contact_ids.splice(index,1)
