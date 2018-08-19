@@ -16,19 +16,36 @@
 
     <h2>Contacts in List</h2>
 
-
-      <div v-for="(contact, index) in contacts_attributes">
-          <h4>{{contact.first_name }}</h4>
-          <button class="button" v-on:click="removeContact(index)">Remove Contact</button>
+    <div class="field has-addons">
+      <div class="control">
+        <div class="select">
+          <select v-model="selected">
+                <option class="dropdown-item" v-for="contact in contacts_available" v-bind:value="contact.id">
+                  {{ contact.first_name }}
+                </option>
+          </select>
+        </div>
       </div>
+      <div class="control">
+        <button class="button is-primary" v-on:click="addContact()">Add Contact</button>
+      </div>
+    </div>
 
-      <select v-model="selected">
-        <option v-for="contact in contacts_available" v-bind:value="contact.id">
-          {{ contact.first_name }}
-        </option>
-      </select>
+    <table class="table is-fullwidth" id="list-contacts-table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Remove</ht>
+        </tr>
+      </thead>
+        <tbody v-for="(contact, index) in contacts_attributes">
+          <tr>
+            <td>{{contact.first_name }}</td>
+            <td><button class="button is-danger" v-on:click="removeContact(index)">Remove Contact</button></td>
+          <tr>
+      </tbody>
+    </table>
 
-      <button class="button" v-on:click="addContact()">Add Contact</button>
       <br>
       <button class="button" v-on:click="saveList">Save List</button>
 
