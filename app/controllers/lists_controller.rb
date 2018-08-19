@@ -35,7 +35,7 @@ end
 		@list = List.find(params[:id])
 		@contacts = @list.contacts
 		@contact_ids = @list.contacts.pluck(:id)
-		@contacts_available = Contact.all
+		@contacts_available = current_user.contacts.all
 
 	end
 

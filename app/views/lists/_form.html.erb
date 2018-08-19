@@ -4,7 +4,7 @@
     id: "list-form",
     data: {
       list: @list.to_json(except: [:created_at, :updated_at, :image]),
-      contact_ids: @contact_ids,
+      contact_ids: @contact_ids.to_json,
       contacts_attributes: @contacts.to_json(except: [:user_id, :created_at, :updated_at, :image, :last_name, :wedding_anniversary, :address, :birthday_month, :birthday_day]),
       contacts_available: @contacts_available.to_json(except: [:user_id, :created_at, :updated_at, :image, :last_name, :wedding_anniversary, :address, :birthday_month, :birthday_day])
     } do %>
@@ -16,28 +16,23 @@
 
     <h2>Contacts in List</h2>
 
-    <div v-for="(contact, index) in contacts_attributes">
 
-      <div v-if="contact._destroy != '1'" class="field has-addons">
-        <p>{{contact.first_name}}: <a v-on:click="removeContact(index)">Delete</a>
+      <div v-for="(contact, index) in contacts_attributes">
+          <h4>{{contact.first_name }}</h4>
+          <button class="button" v-on:click="removeContact(index)">Remove Contact</button>
       </div>
-    </div>
 
-    <br>
+      <select v-model="selected">
+        <option v-for="contact in contacts_available" v-bind:value="contact.id">
+          {{ contact.first_name }}
+        </option>
+      </select>
 
-    <div>
-    <select v-model="selected">
-      <option v-for="contact in contacts_available" v-bind:value="contact.id">
-        {{ contact.first_name }}
-      </option>
-    </select>
-    <button class="button" v-on:click="addContact(index)">Add Contact</button>
-  </div>
+      <button class="button" v-on:click="addContact()">Add Contact</button>
+      <br>
+      <button class="button" v-on:click="saveList">Save List</button>
 
-    <br>
-    <button class="button" v-on:click="saveList">Save List</button>
-
-    <% end %>
+      <% end %>
 
     </div>
 

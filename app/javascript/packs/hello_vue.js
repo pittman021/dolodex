@@ -77,7 +77,6 @@ document.addEventListener('turbolinks:load', () => {
     var contacts_attributes = JSON.parse(list_form.dataset.contactsAttributes)
     var contacts_available = JSON.parse(list_form.dataset.contactsAvailable)
     var contact_ids = JSON.parse(list_form.dataset.contactIds)
-    var selected = contacts_available[0]
     list.contact_ids = contact_ids
 
     const app = new Vue({
@@ -85,22 +84,26 @@ document.addEventListener('turbolinks:load', () => {
       data: function () {
         return {
           list: list,
-          selected: selected,
+          selected: '',
           contacts_available: contacts_available,
           contacts_attributes: contacts_attributes
          }
       },
       methods: {
         addContact: function() {
+          // get the id & person selected & add to attributes
           var contact = this.contacts_available[this.selected - 1]
+          console.log(contact)
+
+          // push item into attributes list to show on page
           this.contacts_attributes.push({
             id: contact.id,
             first_name: contact.first_name
           });
+          // push the item into the id list for post request
           this.list.contact_ids.push(contact.id);
         },
         removeContact: function(index) {
-
             this.list.contact_ids.splice(index,1)
             this.contacts_attributes.splice(index,1)
         },
@@ -110,9 +113,7 @@ document.addEventListener('turbolinks:load', () => {
             this.$http.post('/contacts', { contact: this.contact }).then(response => {
               Turbolinks.visit(`/contacts/${response.body.id}`)
             }, response => {
-
             })
-
           } else {
             this.$http.put(`/lists/${this.list.id}`, {list: this.list }).then(response => {
               Turbolinks.visit(`/lists/${response.body.id}`)
