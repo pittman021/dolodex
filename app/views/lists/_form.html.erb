@@ -41,7 +41,7 @@
         <tbody v-for="(contact, index) in contacts_attributes">
           <tr>
             <td>{{contact.first_name }}</td>
-            <td><button class="button is-danger" v-on:click="removeContact(index)">Remove Contact</button></td>
+            <td><a v-on:click="removeContact(index)">Remove Contact</a></td>
           <tr>
       </tbody>
     </table>

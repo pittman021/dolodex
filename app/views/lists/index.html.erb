@@ -16,9 +16,21 @@
 <% end %>
 
 	<h3> Current Lists </h3>
-<% @lists.each do |l| %>
-		<p> <%= link_to "#{l.name}", list_path(l.id) %> <p>
-	<% end %>
+
+	<table class="table">
+		<thead>
+			<th>Title</th>
+			<th>View</th>
+		</thead>
+		<tbody>
+			<% @lists.each do |l| %>
+				<tr>
+					<td><%= l.name %></td>
+					<td><%= link_to "View", list_path(l.id) %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
 
 
 </section>
