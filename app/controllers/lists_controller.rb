@@ -2,7 +2,7 @@ class ListsController < ApplicationController
 
 	def index
 		@list = List.new
-		@lists = List.all
+		@lists = current_user.lists.all
 	end
 
 	def create
