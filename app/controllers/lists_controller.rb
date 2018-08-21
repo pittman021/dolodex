@@ -22,7 +22,7 @@ class ListsController < ApplicationController
 
 		respond_to do |format|
 		if @list.update(list_params)
-			format.html { redirect_to lists_path, notice: 'Contact was successfully updated.' }
+			format.html { redirect_to lists_path, notice: 'List was successfully updated.' }
 			  format.json { render :json => @list.to_json, status: :ok, location: @list }
 		else
 			format.html { render root_path, notice: "Uh oh, something went wrong" }

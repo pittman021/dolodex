@@ -38,6 +38,15 @@ body {
   margin: 3rem 0;
 }
 
+#notification {
+  -webkit-transition: display 2s; /* Safari */
+  transition: display 2s;
+}
+
+.hide {
+  display: none;
+}
+
 /* Index Page */
 
 #contacts-table {
