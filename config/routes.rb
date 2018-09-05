@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 	get '/dashboard', to: 'dashboard#index', as: 'dashboard'
 
 	authenticated :user do
-		root 'contacts#index', as: :authenticated_root
+		root 'dashboard#index', as: :authenticated_root
 	end
 
-	root to: 'dashboard#index'
+	root to: 'pages#home'
 end
