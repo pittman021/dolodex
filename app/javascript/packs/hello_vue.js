@@ -125,6 +125,13 @@ document.addEventListener('turbolinks:load', () => {
 
             })
           }
+        },
+        deleteList: function() {
+          this.$http.delete(`/lists/${this.list.id}`, {list: this.list }).then(response => {
+            Turbolinks.visit(`/lists`)
+          }, response => {
+
+          })
         }
       }
     });

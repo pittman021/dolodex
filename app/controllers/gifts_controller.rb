@@ -3,6 +3,6 @@ class GiftsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		@gifts = Gift.all
+		@gifts = current_user.gifts.all
 	end
 end

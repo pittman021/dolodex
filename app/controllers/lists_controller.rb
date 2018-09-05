@@ -36,7 +36,12 @@ end
 		@contacts = @list.contacts
 		@contact_ids = @list.contacts.pluck(:id)
 		@contacts_available = current_user.contacts.all
+	end
 
+	def destroy
+		@list = List.find(params[:id])
+		@list.destroy
+		render json: { status: :ok, message: 'List Deleted'}
 	end
 
 	def list_params
