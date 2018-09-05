@@ -1,13 +1,48 @@
 
 
 <div>
-        <h4>Upcoming Birthdays</h4>
-        <% @birthdays.each do |b| %>
-          <div><%= b.first_name %> <%= b.last_name %>: <%= Date::MONTHNAMES[b.birthday_month] %> <%= b.birthday_day %></div>
-        <% end %>
-        <br>
+
+  <nav class="level">
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Contacts</p>
+      <p class="title"><%= @contacts_count %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Gifts</p>
+      <p class="title">123</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Events</p>
+      <p class="title">456K</p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">Lists</p>
+      <p class="title"><%= @lists_count %></p>
+    </div>
+  </div>
+</nav>
+
+<hr>
+
+<div class="birthdays">
+  <h4>Upcoming Birthdays</h4>
+  <% @birthdays.each do |b| %>
+    <div><%= b.first_name %> <%= b.last_name %>: <%= Date::MONTHNAMES[b.birthday_month] %> <%= b.birthday_day %></div>
+  <% end %>
+</div>
+
+<hr>
+
         <h4>Top Gift Lists</h4>
         <% @lists.each do |l| %>
           <div><%= link_to l.name, list_path(l) %></div>
         <% end %>
-  </div>
+
+      </div>
