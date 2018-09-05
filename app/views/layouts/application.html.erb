@@ -40,40 +40,39 @@
           });
         });
       }
-
-});
-</script>
-  </head>
+    });
+  </script>
+</head>
 
   <body>
 
     <%= render 'navbar' %>
 
-
-
-<% if flash[:notice] -%>
-  <div id="notification" class="box cta notification is-primary">
-    <%= notice %></p>
-    <button class="delete"></button>
-  </div>
-  <p class="alert is-danger"><%= alert %></div>
-<% end %>
-
-    <!-- <div>
-      <% flash.each do |key, value| %>
-        <div class="alert alert-dismissable <%= flash_class(key) %> fade in">
-           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          <%= value %>
+      <% if flash[:notice] -%>
+        <div id="notification" class="box cta notification is-primary">
+          <%= notice %></p>
+          <button class="delete"></button>
         </div>
+        <p class="alert is-danger"><%= alert %></div>
       <% end %>
-    </div> -->
 
-    <section class="container">
+      <section class="container content">
 
-          <%= yield %>
-
-
-
+        <nav class="nav-tabs" role="navigation" aria-label="page navigation">
+          <div class="tabs">
+            <ul>
+              <li><%= link_to 'Dashboard', dashboard_path, class: "link is-info" %></li>
+              <li><%= link_to 'Contacts', contacts_path, class: "link is-info" %></li>
+              <li><%= link_to 'Lists', lists_path, class: "link is-info" %></li>
+              <li><%= link_to 'Gifts', gifts_path, class: "link is-info" %></li>
+            </ul>
+          </div>
+        </nav>
+        <br>
+      <div class="content box">
+        <%= yield %>
+      </div>
       </section>
+
   </body>
 </html>

@@ -47,6 +47,16 @@ body {
   display: none;
 }
 
+.container.content {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  max-width: 1100px;
+}
+
+#page-nav {
+  margin-bottom: 5px;
+}
+
 /* Index Page */
 
 #contacts-table {

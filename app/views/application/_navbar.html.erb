@@ -16,8 +16,6 @@
         <div class="tabs is-right">
           <ul>
           <% if current_user %>
-            <li><a class="navbar-item" href="/gifts"><p>View Gifts</p></a></li>
-            <li><a class="navbar-item" href="/lists"><p>View Lists</p></a></li>
             <li><%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %></li>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item is-active' %></li>
           <% else %>
@@ -52,8 +50,6 @@
             <div class="tabs is-right">
               <ul>
               <% if current_user %>
-                <li><a class="navbar-item" href="/gifts"><p>View Gifts</p></a></li>
-                <li><a class="navbar-item" href="/lists"><p>View Lists</p></a></li>
                 <li><%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %></li>
                 <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item is-active' %></li>
               <% else %>

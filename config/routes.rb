@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 	resources :lists
 
 	get '/gifts', to: 'gifts#index', as: 'gifts'
+	get '/dashboard', to: 'dashboard#index', as: 'dashboard'
 
 	authenticated :user do
 		root 'contacts#index', as: :authenticated_root

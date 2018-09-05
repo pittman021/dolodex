@@ -5,9 +5,6 @@ class ContactsController < ApplicationController
   def index
     @user = current_user
     @contacts = current_user.contacts.all.order(:last_name)
-    @lists = current_user.lists.all
-
-    @birthdays = current_user.contacts.where("birthday_month >= ? AND birthday_month <= ?", Time.now.month, (Time.now + 1.month).month).order(:birthday_month)
   end
 
   def upload
