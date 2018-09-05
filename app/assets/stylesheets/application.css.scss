@@ -57,12 +57,23 @@ body {
   margin-bottom: 5px;
 }
 
-/* Index Page */
+.box {
+  margin:1rem;
+}
+
+/* Contacts Page */
 
 #contacts-table {
   margin: 0 auto;
   border-style: solid  2px  grey;
 }
+
+.add-contact-button {
+  float: right;
+  padding-bottom:1rem;
+}
+
+
 
 /* form */
 

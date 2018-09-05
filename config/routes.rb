@@ -18,5 +18,5 @@ Rails.application.routes.draw do
 		root 'contacts#index', as: :authenticated_root
 	end
 
-	root to: 'pages#home'
+	root to: 'dashboard#index'
 end
