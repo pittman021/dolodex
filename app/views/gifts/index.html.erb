@@ -1,6 +1,23 @@
 
+	<h2>Current Lists</h2>
 
-<ul>
-<% @gifts.each do |f| %>
-<li><%= f.title %> ==>  <a href="<%= f.url %>"><%= f.url %></a>
-<% end %>
+	<%= @gifts.inspect %>
+
+			<table class="table is-fullwidth" id="gifts-table">
+				<thead>
+					<tr>
+						<th>Gift Title</th>
+						<th>Who's it for?</th>
+						<th>Gift URL</th>
+					</tr>
+				</thead>
+				<tbody>
+				<% @gifts.each do |gift| %>
+					<tr>
+						<td><%= gift.title %></td>
+						<td><%= gift.contact_id %></td>
+						<td><%= gift.url %></td>
+					</tr>
+				<% end %>
+				</tbody>
+			</table>

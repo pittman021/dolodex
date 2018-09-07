@@ -37,6 +37,7 @@ document.addEventListener('turbolinks:load', () => {
           id: null,
           title: "",
           url: "",
+          user_id: this.contact.user_id,
           _destroy: null
         })
       },
