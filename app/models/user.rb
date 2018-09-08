@@ -7,9 +7,8 @@ class User < ApplicationRecord
   validates_presence_of :name
 
   has_many :contacts
-  has_many :gifts, :through => :contact
+  has_many :gifts
   has_many :lists
-
 
   after_create :send_welcome_email
 

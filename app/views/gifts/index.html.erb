@@ -1,7 +1,5 @@
 
-	<h2>Current Lists</h2>
-
-	<%= @gifts.inspect %>
+	<h2>Current Gifts</h2>
 
 			<table class="table is-fullwidth" id="gifts-table">
 				<thead>
@@ -9,14 +7,16 @@
 						<th>Gift Title</th>
 						<th>Who's it for?</th>
 						<th>Gift URL</th>
+						<th>View</th>
 					</tr>
 				</thead>
 				<tbody>
 				<% @gifts.each do |gift| %>
 					<tr>
 						<td><%= gift.title %></td>
-						<td><%= gift.contact_id %></td>
+						<td><%= gift.contact.first_name%> <%= gift.contact.last_name %></td>
 						<td><%= gift.url %></td>
+						<td><%= link_to "View", contact_path(gift.contact_id) %></td
 					</tr>
 				<% end %>
 				</tbody>

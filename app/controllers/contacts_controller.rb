@@ -40,6 +40,7 @@ class ContactsController < ApplicationController
 
   def update
     @contact = Contact.find(params[:id])
+    
 
     respond_to do |format|
   	if @contact.update(contact_params)
