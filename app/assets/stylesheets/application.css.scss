@@ -61,6 +61,12 @@ body {
   margin:1rem;
 }
 
+.nav-active {
+    border-bottom-color: #dbdbdb;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
 /* Contacts Page */
 
 #contacts-table {

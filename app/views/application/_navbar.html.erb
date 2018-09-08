@@ -14,10 +14,9 @@
     <div class="navbar-menu">
       <div class="navbar-end">
         <div class="tabs is-right">
-          <ul>
           <% if current_user %>
-            <li><%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %></li>
-            <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item is-active' %></li>
+            <%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %></li>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item is-active' %></li>
           <% else %>
             <%= link_to "Login", new_user_session_path, method: :GET, class: 'navbar-item' %>
             <%= link_to "Sign Up", new_user_registration_path, method: :GET, class: 'navbar-item' %>
@@ -48,10 +47,9 @@
         <div class="navbar-menu">
           <div class="navbar-end">
             <div class="tabs is-right">
-              <ul>
               <% if current_user %>
-                <li><%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %></li>
-                <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item is-active' %></li>
+              <%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item is-active' %>
               <% else %>
                 <%= link_to "Login", new_user_session_path, method: :GET, class: 'navbar-item' %>
                 <%= link_to "Sign Up", new_user_registration_path, method: :GET, class: 'navbar-item' %>

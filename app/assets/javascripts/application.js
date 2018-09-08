@@ -14,3 +14,14 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+document.addEventListener('turbolinks:load', () => {
+
+	var path = window.location.pathname
+	var splitPath = path.substr(1,path.length);
+	console.log(splitPath);
+
+	var selectedNav = document.getElementById(splitPath);
+	selectedNav.classList.add('is-active');
+});

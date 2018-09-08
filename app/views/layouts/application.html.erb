@@ -56,22 +56,12 @@
         <p class="alert is-danger"><%= alert %></div>
       <% end %>
 
-      <section class="container content">
+      <%= render 'pages_navbar' %>
 
-        <nav class="nav-tabs" role="navigation" aria-label="page navigation">
-          <div class="tabs">
-            <ul>
-              <li><strong><%= link_to 'Dashboard', dashboard_path, class: "link is-info" %></strong></li>
-              <li><strong><%= link_to 'Contacts', contacts_path, class: "link is-info" %></strong></li>
-              <li><strong><%= link_to 'Lists', lists_path, class: "link is-info" %></strong></li>
-              <li><strong><%= link_to 'Gifts', gifts_path, class: "link is-info" %></strong></li>
-            </ul>
-          </div>
-        </nav>
-        <br>
-      <div class="content box">
-        <%= yield %>
-      </div>
+      <section class="container">
+        <div class="content box">
+          <%= yield %>
+        </div>
       </section>
 
   </body>
