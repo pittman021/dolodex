@@ -36,10 +36,18 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-
   config.action_mailer.perform_caching = false
-
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => 'localhost' }
+  config.action_mailer.smtp_settings = {
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => 'localhost:3000',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -64,18 +72,6 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: 'gmail.com',
-    authentication: 'plain',
-    enable_starttls_auto: true,
-    user_name: 'tim.pittman021@gmail.com',
-    password: 'wtebfcapznrdhkac'
-}
-
-  config.action_mailer.default_url_options = { host: 'localhost' }
 
   config.x.webpacker[:dev_server_host] = "http://127.0.0.1:8080"
 
