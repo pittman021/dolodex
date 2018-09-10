@@ -18,12 +18,8 @@
 
 /* global */
 
-html {
-    min-height: 100vh;
-}
-
-body {
-    min-height: 100vh;
+html, body {
+    height: 100%;
 }
 
 .hero.is-success {
@@ -78,8 +74,6 @@ body {
   float: right;
   padding-bottom:1rem;
 }
-
-
 
 /* form */
 
