@@ -6,15 +6,13 @@
 	<div class="content">
 
 	<h1><%=  @contact.first_name %> <%= @contact.last_name %></h1>
-		<p>Birthday: <%= Date.new(@contact.birthday_month).strftime("%B") %> <%= @contact.birthday_day %>
+		<p>Birthday: <%= get_month(@contact.birthday_month) %> <%= @contact.birthday_day %>
 		<p>Address: <%= @contact.address %></p>
-		<p>Wedding Anniversary: <%= @contact.wedding_anniversary %>
 
 			<h2>Gifts</h2>
 		<ul>
 		<% @contact.gifts.each do |gift| %>
 			<li><%= gift.title %>: <a href=" <%=gift.url %>"><%= gift.url %></a></li>
-
 		<% end %>
 	</ul>
 
