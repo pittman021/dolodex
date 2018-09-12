@@ -8,6 +8,7 @@ namespace :notifications do
 
 				is_two_weeks = Date.today + 14.days
 				days_until = (bday - Date.today)
+				puts c.first_name + c.last_name + days_until
 
 				if days_until == 14
 
