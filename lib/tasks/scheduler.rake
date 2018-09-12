@@ -2,7 +2,7 @@ namespace :notifications do
 		desc "Send users birthday reminders for their contacts"
 		task :send_birthday_reminder => :environment do
 			Contact.all.each do |c|
-				bday = Date.new(Date.today.year, c.birthday_month, c.birthday_daygit pus)
+				bday = Date.new(Date.today.year, c.birthday_month, c.birthday_day)
 				puts c.first_name + c.last_name
 				bday += 1.year if Date.today >= bday
 
