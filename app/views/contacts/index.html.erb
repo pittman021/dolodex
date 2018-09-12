@@ -1,32 +1,31 @@
-<section class="contacts-events">
+<section class="container contacts-index">
+    <div class="content box">
 
-    <div class="add-contact-button">
-              <%= link_to "Add New Contact", new_contact_path, method: :get, class: 'button is-primary' %>
-    </div>
+      <div class="add-contact-button">
+                <%= link_to "Add New Contact", new_contact_path, method: :get, class: 'button is-primary' %>
+      </div>
 
-      	<table class="table is-fullwidth" id="contacts-table">
-      		<thead>
-      			<tr>
-      				<th>First Name</th>
-      				<th>Last Name</th>
-      				<th>Address</th>
-      				<th>Birthday</th>
-      				<th>View</ht>
-      			</tr>
-      		</thead>
-      		<tbody>
-      		<% @contacts.each do |contact| %>
-      			<tr>
-      				<td><%= contact.first_name %></td>
-      				<td><%= contact.last_name %></td>
-      				<td><%= contact.address %></td>
-      				<td> <%= Date::MONTHNAMES[contact.birthday_month] %> <%= contact.birthday_day %></td>
-      				<td><%= link_to "View", contact_path(contact) %>
-      			</tr>
-      		<% end %>
-      		</tbody>
-        </table>
-
-</div>
-  </div>
+        	<table class="table is-fullwidth" id="contacts-table">
+        		<thead>
+        			<tr>
+        				<th>First Name</th>
+        				<th>Last Name</th>
+        				<th>Address</th>
+        				<th>Birthday</th>
+        				<th>View</ht>
+        			</tr>
+        		</thead>
+        		<tbody>
+        		<% @contacts.each do |contact| %>
+        			<tr>
+        				<td><%= contact.first_name %></td>
+        				<td><%= contact.last_name %></td>
+        				<td><%= contact.address %></td>
+        				<td> <%= Date::MONTHNAMES[contact.birthday_month] %> <%= contact.birthday_day %></td>
+        				<td><%= link_to "View", contact_path(contact) %>
+        			</tr>
+        		<% end %>
+        		</tbody>
+          </table>
+      </div>
 </section>
