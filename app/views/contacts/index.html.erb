@@ -1,6 +1,3 @@
-<section class="container contacts-index">
-    <div class="content box">
-
       <div class="add-contact-button">
                 <%= link_to "Add New Contact", new_contact_path, method: :get, class: 'button is-primary' %>
       </div>
@@ -12,6 +9,7 @@
         				<th>Last Name</th>
         				<th>Address</th>
         				<th>Birthday</th>
+                <th>Group</th>
         				<th>View</ht>
         			</tr>
         		</thead>
@@ -22,10 +20,10 @@
         				<td><%= contact.last_name %></td>
         				<td><%= contact.address %></td>
         				<td> <%= Date::MONTHNAMES[contact.birthday_month] %> <%= contact.birthday_day %></td>
-        				<td><%= link_to "View", contact_path(contact) %>
+                <td><%= contact.group.title %></td>
+        				<td><%= link_to "View", contact_path(contact) %></td>
         			</tr>
         		<% end %>
         		</tbody>
           </table>
       </div>
-</section>

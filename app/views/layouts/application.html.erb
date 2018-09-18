@@ -35,7 +35,11 @@
       <% end %>
 
       <%= render 'pages_navbar' %>
-          <%= yield %>
+        <section class="app">
+          <div class="content box">
+            <%= yield %>
+          </div>
+        </section>
       </div>
   </body>
 </html>

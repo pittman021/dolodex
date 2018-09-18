@@ -1,5 +1,5 @@
-<section class="container dashboard">
-  <div class="content box">
+
+
     <nav class="level">
       <div class="level-item has-text-centered">
         <div>
@@ -21,21 +21,21 @@
       </div>
     </nav>
 
-  <hr>
+    <hr>
 
-  <div class="birthdays">
-    <h4>Upcoming Birthdays</h4>
-    <% @birthdays.each do |b| %>
-      <div><%= b.first_name %> <%= b.last_name %>: <%= Date::MONTHNAMES[b.birthday_month] %> <%= b.birthday_day %></div>
-    <% end %>
-  </div>
-
-  <hr>
-
-  <h4>Top Gift Lists</h4>
-    <% @lists.each do |l| %>
-      <div><%= link_to l.name, list_path(l) %></div>
-    <% end %>
-
-</div>
-</section>
+    <div class="columns">
+      <div class="column is-6 birthdays">
+        <h3>Upcoming Birthdays</h3>
+        <% @birthdays.each do |b| %>
+          <div><%= b.first_name %> <%= b.last_name %>: <%= Date::MONTHNAMES[b.birthday_month] %> <%= b.birthday_day %></div>
+        <% end %>
+      </div>
+      <hr>
+      <div class="column is-6">
+      <h2>Gift Lists</h2>
+        <% @lists.each do |l| %>
+          <div><%= link_to l.name, list_path(l) %></div>
+        <% end %>
+      </div>
+    </div>
+    

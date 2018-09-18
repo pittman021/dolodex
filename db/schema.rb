@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_035324) do
+ActiveRecord::Schema.define(version: 2018_09_12_183837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2018_09_07_035324) do
     t.string "address"
     t.integer "birthday_month"
     t.integer "birthday_day"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_contacts_on_group_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
@@ -43,6 +45,12 @@ ActiveRecord::Schema.define(version: 2018_09_07_035324) do
     t.bigint "user_id"
     t.index ["contact_id"], name: "index_gifts_on_contact_id"
     t.index ["user_id"], name: "index_gifts_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lists", force: :cascade do |t|
@@ -71,6 +79,7 @@ ActiveRecord::Schema.define(version: 2018_09_07_035324) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contacts", "groups"
   add_foreign_key "contacts", "users"
   add_foreign_key "gifts", "contacts"
   add_foreign_key "gifts", "users"

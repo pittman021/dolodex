@@ -1,5 +1,15 @@
-<section class="contacts-table">
-		<div class="container">
+<section class="container">
+	<div class="content box">
+		<div class="content is-centered">
+			<h2> Import data </h2>
+				<%= form_tag import_create_path, multipart: true do %>
+					<%= file_field_tag :file %>
+					<%= submit_tag "Import CSV" %>
+				<% end %>
+			</div>
+
+			<div class="contacts-table">
+				<h2>Imported Contacts</h2>
 			<table class="table" id="contacts-table">
 				<thead>
 					<tr>
@@ -23,12 +33,5 @@
 				</tbody>
 			</table>
 		</div>
-</div>
-</div>
+	</div>
 </section>
-<h4> Import data </h4>
-	<%= form_tag import_create_path, multipart: true do %>
-		<%= file_field_tag :file %>
-		<%= submit_tag "Import CSV" %>
-	<% end %>
-</div>

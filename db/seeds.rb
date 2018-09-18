@@ -16,6 +16,11 @@ user = User.new(
 
  puts 'tim.pittman021@gmail.com user created'
 
+
+ Group.create!(
+		title: 'Family'
+	)
+
  3.times do |contact|
 	 Contact.create!(
 	 	first_name: "Katharine #{contact}",
@@ -23,7 +28,8 @@ user = User.new(
 		birthday_month: 10,
 		birthday_day: 8,
 		address: '1609 Sunset Lane, Austin TX, 78704',
-		user_id: 1
+		user_id: 1,
+		group_id: 1
 	 )
 
  end
