@@ -9,21 +9,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag    'hello_vue' %>
-
-    <script>
-
-    document.addEventListener("DOMContentLoaded", function() {
-      setTimeout(function() {
-        var notification = document.getElementById('notification');
-        notification.classList.add('hide');
-      }, 5000)
-    });
-
-  </script>
-</head>
-
+  </head>
   <body>
-
     <%= render 'navbar' %>
 
       <% if flash[:notice] -%>
@@ -41,5 +28,28 @@
           </div>
         </section>
       </div>
-  </body>
+
+      <script>
+
+      document.addEventListener("DOMContentLoaded", function() {
+
+        // navbar toggle stuff
+        (function() {
+        var burger = document.querySelector('.burger');
+        var menu = document.querySelector('.navbar-menu');
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('is-active');
+            menu.classList.toggle('is-active');
+        });
+        })();
+
+        setTimeout(function() {
+          var notification = document.getElementById('notification');
+          notification.classList.add('hide');
+        }, 5000)
+
+
+      });
+      </script>
+    </body>
 </html>

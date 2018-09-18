@@ -4,8 +4,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="container">
     <div class="navbar-brand">
-
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -16,11 +15,15 @@
       <div class="navbar-end">
         <div class="tabs is-right">
           <% if current_user %>
-            <%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %></li>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item is-active' %></li>
+            <ul>
+              <li><%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item is-active' %></li>
+          </ul>
           <% else %>
-            <%= link_to "Login", new_user_session_path, method: :GET, class: 'navbar-item' %>
-            <%= link_to "Sign Up", new_user_registration_path, method: :GET, class: 'navbar-item' %>
+            <ul>
+              <li><%= link_to "Login", new_user_session_path, method: :GET, class: 'navbar-item' %></li>
+              <li><%= link_to "Sign Up", new_user_registration_path, method: :GET, class: 'navbar-item' %></li>
+            </ul>
           <% end %>
         </div>
       </div>
@@ -38,7 +41,7 @@
       <div class="container">
         <div class="navbar-brand">
             <%= link_to image_tag('garden_64.png'), dashboard_path, class: 'navbar-item' %>
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -49,11 +52,15 @@
           <div class="navbar-end">
             <div class="tabs is-right">
               <% if current_user %>
-              <%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item is-active' %>
+                <ul>
+                  <li><%= link_to "Import Contacts", upload_path, method: :GET, class: "navbar-item" %></li>
+                  <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-item is-active' %></li>
+                </ul>
               <% else %>
-                <%= link_to "Login", new_user_session_path, method: :GET, class: 'navbar-item' %>
-                <%= link_to "Sign Up", new_user_registration_path, method: :GET, class: 'navbar-item' %>
+                <ul>
+                  <li> <%= link_to "Login", new_user_session_path, method: :GET, class: 'navbar-item' %></li>
+                  <li><%= link_to "Sign Up", new_user_registration_path, method: :GET, class: 'navbar-item' %></li>
+                <ul>
               <% end %>
             </div>
           </div>

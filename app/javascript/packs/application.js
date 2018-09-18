@@ -8,3 +8,14 @@
 // layout file, like app/views/layouts/application.html.erb
 
 //= require vue
+
+
+// navbar toggle stuff
+(function() {
+var burger = document.querySelector('.burger');
+var menu = document.querySelector('.navbar-menu');
+burger.addEventListener('click', function() {
+    burger.classList.toggle('is-active');
+    menu.classList.toggle('is-active');
+});
+})();
