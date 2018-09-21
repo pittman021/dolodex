@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_12_183837) do
+ActiveRecord::Schema.define(version: 2018_09_21_004209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2018_09_12_183837) do
     t.integer "birthday_month"
     t.integer "birthday_day"
     t.bigint "group_id"
+    t.text "notes"
     t.index ["group_id"], name: "index_contacts_on_group_id"
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end

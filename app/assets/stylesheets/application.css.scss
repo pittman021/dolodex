@@ -63,6 +63,10 @@ html, body {
     border-bottom-width: 1px;
 }
 
+.text-centered {
+  text-align: center;
+}
+
 /* Contacts Page */
 
 #contacts-table {
@@ -80,4 +84,13 @@ html, body {
 
 .contact-form {
   max-width: 400px;
+}
+
+/*homepage */
+
+.footer_logo {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
 }
