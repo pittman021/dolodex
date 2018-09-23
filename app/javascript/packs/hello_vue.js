@@ -138,4 +138,20 @@ document.addEventListener('turbolinks:load', () => {
     });
 
   }
-})
+    // navbar toggle stuff
+    (function() {
+    var burger = document.querySelector('.burger');
+    var menu = document.querySelector('.navbar-menu');
+    burger.addEventListener('click', function() {
+        burger.classList.toggle('is-active');
+        menu.classList.toggle('is-active');
+    });
+    })();
+
+    setTimeout(function() {
+      var notification = document.getElementById('notification');
+      notification.classList.add('hide');
+    }, 5000)
+
+
+  });
