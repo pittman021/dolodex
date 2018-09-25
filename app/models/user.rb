@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :contacts
   has_many :gifts
   has_many :lists
+  has_many :groups
 
   after_create :send_welcome_email
 

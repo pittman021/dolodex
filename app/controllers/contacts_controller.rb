@@ -3,7 +3,6 @@ class ContactsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @user = current_user
     @contacts = current_user.contacts.all.order(:last_name)
   end
 

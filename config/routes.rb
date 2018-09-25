@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 	end
 
 	resources :lists
+	resources :groups
 
 	get '/gifts', to: 'gifts#index', as: 'gifts'
 	get '/dashboard', to: 'dashboard#index', as: 'dashboard'

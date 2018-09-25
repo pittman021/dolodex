@@ -17,6 +17,8 @@
   <input type="text" class="input"  v-model="contact.last_name" />
   </div>
 
+  <%= collection_select(:contact, :group_id, Group.all, :id, :title) %>
+
     <div class="field control">
     <label>Birthday</label>
     <select v-model="contact.birthday_month" >

@@ -18,7 +18,8 @@ user = User.new(
 
 
  Group.create!(
-		title: 'Family'
+		title: 'Family',
+		user_id: 1
 	)
 
  3.times do |contact|
@@ -46,3 +47,14 @@ user = User.new(
 	 end
 
 		 puts '3 gifts created'
+
+		 3.times do |gift|
+			Group.create!(
+			 title: "New Balance Shoe #{gift}",
+			 url: 'newbalance.com',
+			 user_id: 1,
+			 contact_id: 1
+			)
+		end
+
+			puts '3 gifts created'

@@ -1,0 +1,14 @@
+<%= form_for @group do |f| %>
+	<div class="field has-addons">
+		<div class="control is-expanded">
+		<%= f.text_field :title, class: 'input' %><br>
+	</div>
+	<div class="control">
+		<%= f.submit class: 'button is-primary' %>
+	</div>
+	</div>
+<% end %>
+
+<% @groups.each do |g| %>
+	<%= g.title %>
+<% end %>
