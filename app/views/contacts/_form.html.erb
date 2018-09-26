@@ -17,7 +17,7 @@
   <input type="text" class="input"  v-model="contact.last_name" />
   </div>
 
-  <%= collection_select(:contact, :group_id, Group.all, :id, :title) %>
+  <%= collection_select(:contact, :group_id, Group.all, :id, :title, :include_blank => true) %>
 
     <div class="field control">
     <label>Birthday</label>

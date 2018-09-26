@@ -5,7 +5,7 @@
 		<h1><%=  @contact.first_name %> <%= @contact.last_name %></h1>
 			<p>Birthday: <%= get_month(@contact.birthday_month) %> <%= @contact.birthday_day %>
 			<p>Address: <%= @contact.address %></p>
-      <p>Group: <%= @contact.group.title %></p>
+      <p>Group: <%= @contact.group.title rescue 'None' %>
       <p>Notes: <%= @contact.notes %></p>
 
 		<h2>Gifts</h2>

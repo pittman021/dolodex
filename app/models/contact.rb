@@ -4,7 +4,7 @@ class Contact < ApplicationRecord
 	validates_presence_of :first_name, :last_name
 
 	belongs_to :user
-	belongs_to :group
+	belongs_to :group, optional: true
 	has_many :gifts, dependent: :destroy
 	has_and_belongs_to_many :lists
 
