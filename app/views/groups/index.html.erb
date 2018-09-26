@@ -10,5 +10,5 @@
 <% end %>
 
 <% @groups.each do |g| %>
-	<%= g.title %>
+	<%= g.title rescue 'None' %>
 <% end %>
