@@ -17,8 +17,11 @@
   <input type="text" class="input"  v-model="contact.last_name" />
   </div>
 
-  <%= collection_select(:contact, :group_id, Group.all, :id, :title, :include_blank => true) %>
-
+  <div class="field control">
+    <label>Group</label>
+    <%= collection_select(:contact, :group_id, Group.all, :id, :title, :include_blank => true) %>
+  </div>
+  
     <div class="field control">
     <label>Birthday</label>
     <select v-model="contact.birthday_month" >
@@ -82,7 +85,7 @@
       <textarea type="text" class="textarea" v-model="contact.notes"></textarea>
   </div>
 
-  <h2>Gifts</h2>
+  <!-- <h2>Gifts</h2>
 
   <div v-for="(gift, index) in contact.gifts_attributes">
 
@@ -103,7 +106,7 @@
   <button class="button" v-on:click="addGift">Add Gift</button>
 
   <br>
-  <br>
+  <br> -->
   <button class="button is-primary" v-on:click="saveContact">Save Contact</button>
 
 

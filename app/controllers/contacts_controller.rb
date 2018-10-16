@@ -3,7 +3,11 @@ class ContactsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @contacts = current_user.contacts.all.order(:last_name)
+    @contacts = current_user.contacts.includes(:group).all.order(:last_name)
+    respond_to do |format|
+      format.html
+      format.json { render :json => @contacts }
+    end
   end
 
   def upload
@@ -17,6 +21,8 @@ class ContactsController < ApplicationController
 
   def create
     @contact = current_user.contacts.new(contact_params)
+    contact.gifts
+
 
     respond_to do |format|
       if @contact.save

@@ -1,0 +1,23 @@
+
+    <%= form_for @gift do |f| %>
+
+		<div class="field control">
+			<label>Contact</label>
+			<%= collection_select(:gift, :contact_id, Contact.all, :id, :first_name) %> <br>
+	</div>
+
+
+    <div class="field control">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'input' %>
+    </div>
+
+      <div class="field control">
+      <%= f.label :url %>
+      <%= f.text_field :url, class: 'input' %>
+    </div>
+
+      <div class="field control">
+      <%= f.submit 'Save', class: 'button is-primary' %>
+    </div>
+    <% end %>

@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
 	resources :lists
 	resources :groups
+	resources :gifts
 
-	get '/gifts', to: 'gifts#index', as: 'gifts'
 	get '/dashboard', to: 'dashboard#index', as: 'dashboard'
 
 	authenticated :user do

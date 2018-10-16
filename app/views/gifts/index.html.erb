@@ -1,3 +1,7 @@
+<div class="add-contact-button">
+	<%= link_to "Add New Gift", new_gift_path, method: :get, class: 'button is-primary' %>
+</div>
+
 
 	<h2>Current Gifts</h2>
 
@@ -7,7 +11,8 @@
 						<th>Gift Title</th>
 						<th>Who's it for?</th>
 						<th>Gift URL</th>
-						<th>View</th>
+						<th>Edit</th>
+						<th>Delete?</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -16,7 +21,8 @@
 						<td><%= gift.title %></td>
 						<td><%= gift.contact.first_name%> <%= gift.contact.last_name %></td>
 						<td><%= gift.url %></td>
-						<td><%= link_to "View", contact_path(gift.contact_id) %></td
+						<td><%= link_to "Edit", edit_gift_path(gift.id) %></td>
+						<td><%= link_to "Delete", gift_path(gift.id), method: :delete, data: {confirm: "Are you sure?"} %></td>
 					</tr>
 				<% end %>
 				</tbody>
