@@ -21,8 +21,6 @@ class ContactsController < ApplicationController
 
   def create
     @contact = current_user.contacts.new(contact_params)
-    contact.gifts
-
 
     respond_to do |format|
       if @contact.save
