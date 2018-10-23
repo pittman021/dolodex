@@ -13,15 +13,15 @@ class GroupsController < ApplicationController
 
 		respond_to do |format|
 			if @group.save
-				format.html { redirect_to lists_path, notice: "Your gift was added. Gosh, so generous" }
+				format.html { redirect_to groups_path, notice: "Your gift was added. Gosh, so generous" }
 			else
-				format.html { redirect_to list_path, notice: "Uh oh, something went wrong " }
+				format.html { redirect_to groups_path, notice: "Uh oh, something went wrong " }
 			end
 		end
 	end
 
 	def group_params
-		 params.require(:group).permit(:title)
+		 params.require(:group).permit(:title, :user_id)
 	end
 
 end

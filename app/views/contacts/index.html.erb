@@ -1,28 +1,37 @@
-      <div class="add-contact-button">
-        <%= link_to "Add New Contact", new_contact_path, method: :get, class: 'button is-primary' %>
-        <%= link_to "Add New Group", groups_path, method: :get, class: 'button is-primary' %>
-      </div>
 
-      <div id="contacts">
-      	<table class="table is-fullwidth" id="contacts-table">
-      		<thead>
-      			<tr>
-      				<th>First Name</th>
-      				<th>Last Name</th>
-      				<th>Address</th>
-      				<th>Birthday</th>
-      				<th>View</ht>
-      			</tr>
-      		</thead>
-      		<tbody>
-            <% @contacts.each do |c| %>
-            <tr>
-              <td><%= c.first_name %></td>
-              <td><%= c.last_name %></td>
-              <td><%= c.address %></td>
-              <td><%= Date::MONTHNAMES[c.birthday_month] %> <%= c.birthday_day %></td>
-              <td><%= link_to 'View', contact_path(c.id) %></td>
-            <% end %>
-          </tr>
-      		</tbody>
-      </table>
+<div id="contact-page">
+<div class="columns">
+  <div class="column is-3">
+    <div class="box">
+    <div class="group-list">
+          <%= link_to "Add New Contact", new_contact_path, method: :get, class: 'button is-primary' %><br>
+      <button><%= link_to "All", contacts_path() %></button>
+      <% @groups.each do |g| %>
+      <p><button><%= link_to g.title, contacts_path(:group => g.title) %></button></p>
+      <% end %>
+    </div>
+  </div>
+  </div>
+
+  <div class="column is-4">
+    <div class="box">
+    <div style="overflow-y:scroll; overflow-x:hidden; height:400px;" id="contacts">
+      <h2 class="title">Contacts</h2>
+      <nav class="panel">
+      <% @contacts.each do |c| %>
+      <%= link_to "#{c.first_name}" "#{c.last_name}", contact_path(c.id), data: { remote: true }, class: 'panel-block contact-panel' %>
+        <% end %>
+
+  </div>
+</nav>
+</div>
+
+</div>
+
+<div class="column is-5">
+  <div id="contact-card" class="box">
+    <p>hello</p>
+  </div>
+</div>
+</div>
+</div>

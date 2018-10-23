@@ -1,0 +1,60 @@
+<%= form_for @contact do |f| %>
+
+	<div class="field control">
+		<label>First Name</label>
+		<%= f.text_field :first_name, class: 'input' %>
+	</div>
+
+	<div class="field control">
+	<label>Last Name</label>
+	<%= f.text_field :last_name, class: 'input' %>
+	</div>
+
+	<div class="field control">
+		<label>Group</label>
+		<%= f.collection_select :group_id, Group.all, :id, :title %>
+	</div>
+
+		<div class="field control">
+			<label>Birthday</label>
+	
+			<%= f.select :birthday_day, options_for_select(0..31) %>
+	</div>
+
+	<div class="field control">
+		<label>Address</label>
+		<%= f.text_field :address, class: 'input' %>
+	</div>
+
+	<div class="field control">
+		<label>Notes</label>
+		<%= f.text_area :notes, class: 'textarea' %>
+	</div>
+
+<!-- <h2>Gifts</h2>
+
+<div v-for="(gift, index) in contact.gifts_attributes">
+
+	<div v-if="gift._destroy != '1'" class="field has-addons">
+
+
+		<div class="field is-horizontal">
+
+		<input type="text" placeholder="gift title" class="input" v-model="gift.title" />
+		<input type="text" id="gift-url" placeholder="url" class="input" v-model="gift.url" />
+	</div>
+	<div class="control">
+		<button class="button" v-on:click="removeGift(index)">Delete Gift</button>
+	</div>
+	</div>
+</div>
+<br>
+<button class="button" v-on:click="addGift">Add Gift</button>
+
+<br>
+<br> -->
+<%= f.submit "Save", class: 'button is-primary' %>
+
+<% end %>
+
+</div>

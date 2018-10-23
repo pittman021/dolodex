@@ -10,6 +10,8 @@ class Contact < ApplicationRecord
 
 	accepts_nested_attributes_for :gifts, :allow_destroy => true
 
+	scope :group_filter, -> (group) { where('groups.title = ?', group) }
+
 	def self.import(file)
 		# a block the runs through a loop in our CSV data
 
